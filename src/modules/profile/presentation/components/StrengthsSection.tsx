@@ -1,0 +1,89 @@
+import { SectionHeader } from "@/shared/ui/section-header/SectionHeader";
+import { SpotlightCard } from "@/shared/ui/spotlight-card/SpotlightCard";
+import type { SpotlightCardTone } from "@/shared/ui/spotlight-card/SpotlightCard";
+
+import styles from "./StrengthsSection.module.css";
+
+interface Strength {
+  bullets: string[];
+  description: string;
+  number: string;
+  tag: string;
+  title: string;
+  tone: SpotlightCardTone;
+}
+
+const strengths: Strength[] = [
+  {
+    number: "01",
+    title: "Frontend moderno",
+    description:
+      "Construcción de interfaces SPA con componentes reutilizables, estados claros y experiencia visual cuidada.",
+    bullets: ["React y TypeScript", "Arquitectura por módulos", "UI responsive y accesible"],
+    tag: "Interface",
+    tone: "cyan",
+  },
+  {
+    number: "02",
+    title: "APIs y bases de datos",
+    description:
+      "Integración con servicios REST, manejo de estados de carga/error y modelado de datos para proyectos full-stack.",
+    bullets: ["Consumo de APIs REST", "PostgreSQL y Prisma", "Estados con TanStack Query"],
+    tag: "Data flow",
+    tone: "blue",
+  },
+  {
+    number: "03",
+    title: "Documentación y deploy",
+    description:
+      "Trabajo orientado a entregas defendibles: repos organizados, README útil, Docker y despliegues públicos.",
+    bullets: ["Git y GitHub", "Docker y entornos reproducibles", "Deploy en Vercel/Netlify"],
+    tag: "Delivery",
+    tone: "magenta",
+  },
+];
+
+export function StrengthsSection() {
+  return (
+    <section className={styles.strengths} aria-labelledby="strengths-title">
+      <SectionHeader
+        align="center"
+        eyebrow="Propuesta profesional"
+        title="Fortalezas para construir productos web"
+        titleId="strengths-title"
+        description="Combino fundamentos de frontend, consumo de APIs, bases de datos y documentación para entregar interfaces claras, defendibles y publicables."
+      />
+
+      <div className={styles.grid}>
+        {strengths.map((strength) => (
+          <SpotlightCard
+            as="article"
+            className={styles.card}
+            contentClassName={styles.cardContent}
+            key={strength.title}
+            tone={strength.tone}
+            variant="featured"
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.number}>{strength.number}</span>
+              <span className={styles.tag}>{strength.tag}</span>
+            </div>
+
+            <div className={styles.cardBody}>
+              <h3 className={styles.cardTitle}>{strength.title}</h3>
+              <p className={styles.cardDescription}>{strength.description}</p>
+            </div>
+
+            <ul className={styles.bulletList}>
+              {strength.bullets.map((bullet) => (
+                <li className={styles.bulletItem} key={bullet}>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </SpotlightCard>
+        ))}
+      </div>
+    </section>
+  );
+}
