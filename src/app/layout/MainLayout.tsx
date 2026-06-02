@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 
+import { Navbar } from "@/app/layout/Navbar";
+
 export function MainLayout() {
   return (
     <div className="app-shell">
@@ -7,7 +9,7 @@ export function MainLayout() {
         Saltar al contenido principal
       </a>
 
-      <div data-layout-slot="navbar" aria-hidden="true" />
+      <Navbar />
 
       <main id="main-content" className="responsive-container responsive-section">
         <Outlet />
