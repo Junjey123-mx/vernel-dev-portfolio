@@ -1,8 +1,8 @@
 export function NotFoundPage() {
   return (
-    <main>
-      <h1>Página no encontrada</h1>
+    <section aria-labelledby="not-found-title">
+      <h1 id="not-found-title">Página no encontrada</h1>
       <p>La ruta solicitada no existe dentro del portafolio.</p>
-    </main>
+    </section>
   );
 }

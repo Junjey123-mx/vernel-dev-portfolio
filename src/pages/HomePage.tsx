@@ -1,8 +1,8 @@
 export function HomePage() {
   return (
-    <main>
-      <h1>Vernel.dev</h1>
+    <section aria-labelledby="home-title">
+      <h1 id="home-title">Vernel.dev</h1>
       <p>Portafolio profesional en construcción.</p>
-    </main>
+    </section>
   );
 }

@@ -1,8 +1,8 @@
 export function StackPage() {
   return (
-    <main>
-      <h1>Stack técnico</h1>
+    <section aria-labelledby="stack-title">
+      <h1 id="stack-title">Stack técnico</h1>
       <p>Tecnologías organizadas por experiencia, evidencia y aplicación en proyectos.</p>
-    </main>
+    </section>
   );
 }
