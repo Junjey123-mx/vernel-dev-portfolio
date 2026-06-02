@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { BorderRotate } from "@/shared/ui/animated-gradient-border/AnimatedGradientBorder";
 import { ParticlesBackground } from "@/shared/effects/particles/ParticlesBackground";
+
+import { TechSignalPanel } from "./TechSignalPanel";
 
 import styles from "./HeroSection.module.css";
 
@@ -50,27 +51,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <BorderRotate
-          className={styles.heroPanelBorder}
-          contentClassName={styles.heroPanelContent}
-          animationSpeed={2.6}
-          borderRadius={32}
-          borderWidth={1}
-        >
-          <div className={styles.heroPanel} aria-label="Resumen técnico del perfil">
-            <p className={styles.panelLabel}>Frontend stack</p>
-
-            <ul className={styles.panelList}>
-              <li>React + TypeScript</li>
-              <li>APIs REST + estados de carga/error</li>
-              <li>Docker, GitHub y deploy público</li>
-            </ul>
-
-            <p className={styles.panelNote}>
-              Enfoque en código modular, UI moderna y decisiones técnicas defendibles.
-            </p>
-          </div>
-        </BorderRotate>
+        <TechSignalPanel />
       </div>
     </section>
   );

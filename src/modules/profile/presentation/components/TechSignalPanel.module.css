@@ -1,0 +1,163 @@
+.panelBorder {
+  width: 100%;
+  justify-self: end;
+}
+
+.panelContent {
+  width: 100%;
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  gap: 1.15rem;
+  min-height: 21rem;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  background:
+    linear-gradient(180deg, rgba(7, 22, 29, 0.54), rgba(5, 7, 13, 0.82)),
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.08), transparent 42%);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0.85rem;
+  pointer-events: none;
+  border: 1px solid rgba(77, 232, 232, 0.08);
+  border-radius: 1.35rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--neon-magenta);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.status {
+  position: relative;
+  margin: 0;
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.08);
+  color: var(--success);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.36rem 0.58rem 0.36rem 1.35rem;
+}
+
+.status::before {
+  content: "";
+  position: absolute;
+  left: 0.58rem;
+  top: 50%;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--success);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+  transform: translateY(-50%);
+}
+
+.signalList {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.signalItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 0.85fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(77, 232, 232, 0.1);
+  border-radius: var(--radius-md);
+  background: rgba(77, 232, 232, 0.035);
+  padding: 0.7rem 0.78rem;
+}
+
+.signalDot {
+  width: 0.44rem;
+  height: 0.44rem;
+  border-radius: 999px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(77, 232, 232, 0.7);
+}
+
+.signalLabel {
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.signalValue {
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.tag {
+  border: 1px solid rgba(77, 232, 232, 0.18);
+  border-radius: 999px;
+  background: rgba(77, 232, 232, 0.06);
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.58rem;
+}
+
+@media (max-width: 960px) {
+  .panelBorder {
+    justify-self: stretch;
+    max-width: 34rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel {
+    min-height: auto;
+  }
+
+  .signalItem {
+    grid-template-columns: auto 1fr;
+  }
+
+  .signalValue {
+    grid-column: 2;
+    text-align: left;
+  }
+}
