@@ -1,0 +1,80 @@
+.card {
+  height: 100%;
+}
+
+.cardContent {
+  height: 100%;
+}
+
+.cardContent > * {
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.95rem;
+}
+
+.category {
+  margin: 0 0 0.35rem;
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2vw, 1.42rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.featuredBadge {
+  flex: 0 0 auto;
+  border: 1px solid rgba(217, 70, 239, 0.34);
+  border-radius: 999px;
+  background: rgba(217, 70, 239, 0.08);
+  color: var(--neon-magenta);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.34rem 0.5rem;
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.projectCount {
+  margin: 1rem 0 0;
+  width: fit-content;
+  border: 1px solid rgba(77, 232, 232, 0.18);
+  border-radius: 999px;
+  background: rgba(77, 232, 232, 0.06);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.58rem;
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+  }
+}
