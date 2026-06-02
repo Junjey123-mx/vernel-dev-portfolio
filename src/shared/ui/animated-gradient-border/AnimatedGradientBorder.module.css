@@ -1,0 +1,83 @@
+.animatedGradientBorder {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: var(--agb-radius);
+  padding: var(--agb-border-width);
+  overflow: hidden;
+  background:
+    conic-gradient(
+      from 0deg,
+      var(--agb-primary),
+      var(--agb-secondary),
+      var(--agb-accent),
+      var(--agb-primary)
+    );
+  box-shadow:
+    0 0 24px rgba(77, 232, 232, 0.12),
+    0 0 36px rgba(217, 70, 239, 0.08);
+}
+
+.animatedGradientBorder::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      var(--agb-primary) 70deg,
+      var(--agb-secondary) 150deg,
+      var(--agb-accent) 230deg,
+      transparent 300deg,
+      var(--agb-primary) 360deg
+    );
+  animation: animated-gradient-border-rotate var(--agb-speed) linear infinite;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(var(--agb-radius) - var(--agb-border-width));
+  background:
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.08), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(217, 70, 239, 0.08), transparent 38%),
+    var(--agb-background);
+  color: var(--color-text);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.mode-stop-rotate-on-hover:hover::before {
+  animation-play-state: paused;
+}
+
+.mode-pause-rotate-on-hover:hover::before {
+  animation-play-state: paused;
+}
+
+.disabled {
+  opacity: 0.7;
+  background: var(--color-border);
+  box-shadow: none;
+}
+
+.disabled::before {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes animated-gradient-border-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animatedGradientBorder::before {
+    animation: none;
+  }
+}
