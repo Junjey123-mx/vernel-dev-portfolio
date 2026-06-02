@@ -1,0 +1,162 @@
+.borderGlowPanel {
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --border-glow-edge-sensitivity: 30;
+  --border-glow-radius: 28px;
+  --border-glow-padding: 40px;
+  --border-glow-cone-spread: 25%;
+  --border-glow-fill-opacity: 0.35;
+  --border-glow-intensity: 0.85;
+  --border-glow-color: 77 232 232;
+  --border-glow-bg: rgba(7, 22, 29, 0.88);
+  --border-glow-primary: #4de8e8;
+  --border-glow-secondary: #2f80ff;
+  --border-glow-accent: #d946ef;
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  border: 1px solid rgba(77, 232, 232, 0.14);
+  border-radius: var(--border-glow-radius);
+  background: var(--border-glow-bg);
+  color: var(--color-text);
+  overflow: visible;
+  box-shadow: var(--shadow-card);
+  transform: translate3d(0, 0, 0);
+}
+
+.borderGlowPanel::before,
+.borderGlowPanel::after,
+.edgeLight {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.borderGlowPanel::before {
+  z-index: -1;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--border-glow-bg), var(--border-glow-bg)) padding-box,
+    conic-gradient(
+      from var(--cursor-angle),
+      transparent 0%,
+      var(--border-glow-primary) var(--border-glow-cone-spread),
+      var(--border-glow-secondary) calc(var(--border-glow-cone-spread) + 12%),
+      var(--border-glow-accent) calc(var(--border-glow-cone-spread) + 24%),
+      transparent calc(var(--border-glow-cone-spread) + 42%),
+      transparent 100%
+    ) border-box;
+  opacity: clamp(
+    0,
+    calc(
+      (
+        var(--edge-proximity) - var(--border-glow-edge-sensitivity)
+      ) / (
+        100 - var(--border-glow-edge-sensitivity)
+      )
+    ),
+    1
+  );
+}
+
+.borderGlowPanel::after {
+  z-index: 0;
+  background:
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.08), transparent 38%),
+    radial-gradient(circle at bottom right, rgba(217, 70, 239, 0.08), transparent 42%),
+    linear-gradient(
+      135deg,
+      rgba(77, 232, 232, 0.04),
+      rgba(47, 128, 255, 0.02),
+      rgba(217, 70, 239, 0.04)
+    );
+  opacity: calc(
+    var(--border-glow-fill-opacity) *
+    clamp(
+      0,
+      (
+        var(--edge-proximity) - var(--border-glow-edge-sensitivity)
+      ) / (
+        100 - var(--border-glow-edge-sensitivity)
+      ),
+      1
+    )
+  );
+  mix-blend-mode: screen;
+}
+
+.edgeLight {
+  inset: calc(var(--border-glow-padding) * -1);
+  z-index: 1;
+  opacity: calc(
+    var(--border-glow-intensity) *
+    clamp(
+      0,
+      (
+        var(--edge-proximity) - var(--border-glow-edge-sensitivity)
+      ) / (
+        100 - var(--border-glow-edge-sensitivity)
+      ),
+      1
+    )
+  );
+  background:
+    conic-gradient(
+      from var(--cursor-angle),
+      transparent 0%,
+      rgb(var(--border-glow-color) / 0.42) 8%,
+      rgb(var(--border-glow-color) / 0.18) 14%,
+      transparent 24%,
+      transparent 100%
+    );
+  filter: blur(18px);
+  mix-blend-mode: plus-lighter;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.animated::before,
+.animated .edgeLight {
+  animation: border-glow-sweep 4.5s linear infinite;
+}
+
+.disabled {
+  opacity: 0.68;
+  box-shadow: none;
+}
+
+.disabled::before,
+.disabled::after,
+.disabled .edgeLight {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes border-glow-sweep {
+  to {
+    --cursor-angle: 405deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .borderGlowPanel::before,
+  .borderGlowPanel::after,
+  .edgeLight {
+    transition: none;
+  }
+
+  .animated::before,
+  .animated .edgeLight {
+    animation: none;
+  }
+}
