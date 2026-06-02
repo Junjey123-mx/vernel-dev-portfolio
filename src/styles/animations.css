@@ -1,0 +1,174 @@
+/* Global animation system for Vernel.dev.
+   These animations are intentionally subtle to preserve a professional
+   dark neon/TRON-inspired interface without overwhelming the user. */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 rgba(77, 232, 232, 0),
+      var(--shadow-soft);
+  }
+
+  50% {
+    box-shadow:
+      0 0 28px rgba(77, 232, 232, 0.28),
+      var(--shadow-cyan);
+  }
+}
+
+@keyframes text-glow-pulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 0 rgba(77, 232, 232, 0),
+      0 0 10px rgba(77, 232, 232, 0.12);
+  }
+
+  50% {
+    text-shadow:
+      0 0 8px rgba(77, 232, 232, 0.55),
+      0 0 22px rgba(47, 128, 255, 0.28);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 0.18;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -0.45rem, 0);
+  }
+}
+
+@keyframes neon-border-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 420ms ease-out both;
+}
+
+.animate-slide-up {
+  animation: slide-up 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3.2s ease-in-out infinite;
+}
+
+.animate-text-glow-pulse {
+  animation: text-glow-pulse 3.2s ease-in-out infinite;
+}
+
+.animate-floating {
+  animation: floating 5.5s ease-in-out infinite;
+}
+
+.animate-neon-border-sweep {
+  background-size: 220% 220%;
+  animation: neon-border-sweep 4.5s ease-in-out infinite;
+}
+
+.scanline-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(77, 232, 232, 0.08) 48%,
+      rgba(77, 232, 232, 0.22) 50%,
+      rgba(217, 70, 239, 0.08) 52%,
+      transparent 100%
+    );
+  transform: translateY(-100%);
+  animation: scanline 5.5s linear infinite;
+}
+
+.motion-safe {
+  --motion-state: running;
+}
+
+.motion-reduce {
+  --motion-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-glow-pulse,
+  .animate-text-glow-pulse,
+  .animate-floating,
+  .animate-neon-border-sweep,
+  .scanline-overlay::after {
+    animation: none !important;
+  }
+}
