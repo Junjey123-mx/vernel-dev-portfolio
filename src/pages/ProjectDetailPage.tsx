@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 
+import { GithubStatsCard } from "@/modules/github/presentation/components/GithubStatsCard";
 import { getProjectBySlug } from "@/modules/projects/application/getProjectBySlug";
 import { ProjectArchitecture } from "@/modules/projects/presentation/components/detail/ProjectArchitecture";
 import { ProjectChallenges } from "@/modules/projects/presentation/components/detail/ProjectChallenges";
@@ -29,14 +30,15 @@ export function ProjectDetailPage() {
 
       <div className="responsive-grid">
         <ProjectArchitecture project={project} />
-        <ProjectHighlights project={project} />
+        <GithubStatsCard repository={project.github} />
       </div>
 
       <div className="responsive-grid">
+        <ProjectHighlights project={project} />
         <ProjectDecisions project={project} />
-        <ProjectChallenges project={project} />
       </div>
 
+      <ProjectChallenges project={project} />
       <ProjectLinks project={project} />
     </section>
   );
