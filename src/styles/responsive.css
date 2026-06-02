@@ -1,0 +1,129 @@
+/* Responsive foundation for Vernel.dev.
+   Breakpoints:
+   - mobile: up to 640px
+   - tablet: 641px to 1024px
+   - desktop: 1025px and above
+*/
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-width: 0;
+}
+
+.responsive-container {
+  width: min(100% - 2rem, var(--container-max-width));
+  margin-inline: auto;
+}
+
+.responsive-section {
+  padding-block: var(--section-spacing);
+}
+
+.responsive-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+.responsive-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.responsive-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.responsive-split {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hide-on-mobile {
+  display: initial;
+}
+
+.show-on-mobile {
+  display: none;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.safe-inline-padding {
+  padding-inline: max(1rem, env(safe-area-inset-left));
+  padding-inline-end: max(1rem, env(safe-area-inset-right));
+}
+
+@media (min-width: 768px) {
+  .responsive-split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-spacing: 5rem;
+  }
+
+  .responsive-container {
+    width: min(100% - 1.5rem, var(--container-max-width));
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 4rem;
+    --section-spacing: 4rem;
+  }
+
+  .responsive-grid {
+    gap: 1rem;
+  }
+
+  .responsive-cluster {
+    align-items: stretch;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .show-on-mobile {
+    display: initial !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-spacing: 3.25rem;
+  }
+
+  .responsive-container {
+    width: min(100% - 1rem, var(--container-max-width));
+  }
+
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
