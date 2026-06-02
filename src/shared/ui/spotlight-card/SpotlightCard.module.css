@@ -1,0 +1,134 @@
+.spotlightCard {
+  --spotlight-color: 77, 232, 232;
+  --spotlight-opacity: 0.22;
+  --spotlight-size: 320px;
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-width: 0;
+  border: 1px solid var(--spotlight-border, var(--color-border));
+  border-radius: var(--spotlight-radius, var(--radius-lg));
+  background:
+    linear-gradient(180deg, rgba(10, 26, 32, 0.82), rgba(7, 22, 29, 0.92)),
+    var(--color-card);
+  color: var(--color-text);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.spotlightCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle var(--spotlight-size) at var(--spotlight-x) var(--spotlight-y),
+      rgba(var(--spotlight-color), var(--spotlight-opacity)),
+      transparent 62%
+    );
+  transition: opacity 180ms ease;
+}
+
+.spotlightCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.72;
+  background:
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.08), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(217, 70, 239, 0.06), transparent 38%);
+}
+
+.interactive:hover::before,
+.spotlightCard:focus-within::before {
+  opacity: 1;
+}
+
+.interactive:hover {
+  border-color: var(--color-border-strong);
+  box-shadow:
+    var(--shadow-card),
+    0 0 26px rgba(var(--spotlight-color), 0.16);
+  transform: translateY(-2px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.variant-default {
+  --spotlight-radius: var(--radius-lg);
+  --spotlight-border: rgba(77, 232, 232, 0.18);
+
+  padding: 1.25rem;
+}
+
+.variant-featured {
+  --spotlight-radius: var(--radius-xl);
+  --spotlight-border: rgba(77, 232, 232, 0.32);
+
+  padding: 1.5rem;
+  box-shadow:
+    var(--shadow-card),
+    0 0 30px rgba(77, 232, 232, 0.08);
+}
+
+.variant-subtle {
+  --spotlight-radius: var(--radius-md);
+  --spotlight-border: rgba(142, 168, 179, 0.16);
+
+  padding: 1rem;
+  background:
+    linear-gradient(180deg, rgba(10, 26, 32, 0.72), rgba(7, 22, 29, 0.86)),
+    var(--color-card);
+}
+
+.tone-cyan {
+  --spotlight-color: 77, 232, 232;
+}
+
+.tone-blue {
+  --spotlight-color: 47, 128, 255;
+}
+
+.tone-magenta {
+  --spotlight-color: 217, 70, 239;
+}
+
+.tone-purple {
+  --spotlight-color: 139, 92, 246;
+}
+
+.disabled {
+  opacity: 0.68;
+  pointer-events: none;
+}
+
+.disabled::before {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlightCard,
+  .spotlightCard::before {
+    transition: none;
+  }
+
+  .interactive:hover {
+    transform: none;
+  }
+}
