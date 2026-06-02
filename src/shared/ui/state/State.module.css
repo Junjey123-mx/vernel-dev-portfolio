@@ -1,0 +1,121 @@
+.state {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  width: min(100%, 34rem);
+  margin-inline: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top, rgba(77, 232, 232, 0.08), transparent 55%),
+    rgba(7, 22, 29, 0.72);
+  color: var(--color-text);
+  text-align: center;
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+.content {
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.message {
+  margin: 0;
+  max-width: 28rem;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.action {
+  margin-top: 0.65rem;
+}
+
+.spinner,
+.errorIcon,
+.emptyIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.spinner {
+  border: 2px solid rgba(77, 232, 232, 0.16);
+  border-top-color: var(--neon-cyan);
+  border-right-color: rgba(217, 70, 239, 0.8);
+  box-shadow:
+    0 0 18px rgba(77, 232, 232, 0.18),
+    inset 0 0 14px rgba(77, 232, 232, 0.08);
+  animation: state-spin 900ms linear infinite;
+}
+
+.errorIcon {
+  border: 1px solid rgba(239, 68, 68, 0.38);
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.14);
+}
+
+.emptyIcon {
+  border: 1px solid rgba(77, 232, 232, 0.3);
+  background: rgba(77, 232, 232, 0.08);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 18px rgba(77, 232, 232, 0.12);
+}
+
+.loadingState {
+  border-color: rgba(77, 232, 232, 0.2);
+}
+
+.errorState {
+  border-color: rgba(239, 68, 68, 0.28);
+  background:
+    radial-gradient(circle at top, rgba(239, 68, 68, 0.08), transparent 55%),
+    rgba(7, 22, 29, 0.72);
+}
+
+.emptyState {
+  border-color: rgba(77, 232, 232, 0.18);
+}
+
+@keyframes state-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .state {
+    padding: 1.5rem;
+  }
+
+  .spinner,
+  .errorIcon,
+  .emptyIcon {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
