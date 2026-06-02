@@ -1,0 +1,180 @@
+.badge {
+  --badge-border: var(--color-border);
+  --badge-bg: rgba(77, 232, 232, 0.06);
+  --badge-color: var(--color-text-muted);
+  --badge-glow: rgba(77, 232, 232, 0.12);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--badge-border);
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--badge-color);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 0 0 rgba(77, 232, 232, 0);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.badge:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+  box-shadow: 0 0 16px var(--badge-glow);
+  transform: translateY(-1px);
+}
+
+.techBadge {
+  gap: 0.42rem;
+}
+
+.techBadge::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.projectBadge {
+  text-transform: uppercase;
+}
+
+.size-sm {
+  min-height: 1.7rem;
+  padding: 0.38rem 0.62rem;
+  font-size: 0.72rem;
+}
+
+.size-md {
+  min-height: 2rem;
+  padding: 0.48rem 0.78rem;
+  font-size: 0.8rem;
+}
+
+.tone-cyan {
+  --badge-border: rgba(77, 232, 232, 0.34);
+  --badge-bg: rgba(77, 232, 232, 0.08);
+  --badge-color: var(--neon-cyan);
+  --badge-glow: rgba(77, 232, 232, 0.18);
+}
+
+.tone-blue {
+  --badge-border: rgba(47, 128, 255, 0.34);
+  --badge-bg: rgba(47, 128, 255, 0.08);
+  --badge-color: var(--neon-blue);
+  --badge-glow: rgba(47, 128, 255, 0.18);
+}
+
+.tone-magenta {
+  --badge-border: rgba(217, 70, 239, 0.34);
+  --badge-bg: rgba(217, 70, 239, 0.08);
+  --badge-color: var(--neon-magenta);
+  --badge-glow: rgba(217, 70, 239, 0.18);
+}
+
+.tone-purple {
+  --badge-border: rgba(139, 92, 246, 0.34);
+  --badge-bg: rgba(139, 92, 246, 0.08);
+  --badge-color: var(--neon-purple);
+  --badge-glow: rgba(139, 92, 246, 0.18);
+}
+
+.tone-neutral {
+  --badge-border: rgba(142, 168, 179, 0.24);
+  --badge-bg: rgba(142, 168, 179, 0.08);
+  --badge-color: var(--color-text-muted);
+  --badge-glow: rgba(142, 168, 179, 0.12);
+}
+
+.variant-featured {
+  --badge-border: rgba(77, 232, 232, 0.42);
+  --badge-bg: rgba(77, 232, 232, 0.1);
+  --badge-color: var(--neon-cyan);
+  --badge-glow: rgba(77, 232, 232, 0.2);
+}
+
+.variant-fullstack {
+  --badge-border: rgba(77, 232, 232, 0.34);
+  --badge-bg: rgba(77, 232, 232, 0.08);
+  --badge-color: var(--neon-cyan);
+  --badge-glow: rgba(77, 232, 232, 0.18);
+}
+
+.variant-frontend {
+  --badge-border: rgba(47, 128, 255, 0.34);
+  --badge-bg: rgba(47, 128, 255, 0.08);
+  --badge-color: var(--neon-blue);
+  --badge-glow: rgba(47, 128, 255, 0.18);
+}
+
+.variant-backend {
+  --badge-border: rgba(139, 92, 246, 0.34);
+  --badge-bg: rgba(139, 92, 246, 0.08);
+  --badge-color: var(--neon-purple);
+  --badge-glow: rgba(139, 92, 246, 0.18);
+}
+
+.variant-mobile {
+  --badge-border: rgba(217, 70, 239, 0.34);
+  --badge-bg: rgba(217, 70, 239, 0.08);
+  --badge-color: var(--neon-magenta);
+  --badge-glow: rgba(217, 70, 239, 0.18);
+}
+
+.variant-academic {
+  --badge-border: rgba(142, 168, 179, 0.28);
+  --badge-bg: rgba(142, 168, 179, 0.08);
+  --badge-color: var(--color-text-muted);
+  --badge-glow: rgba(142, 168, 179, 0.12);
+}
+
+.variant-collaborative {
+  --badge-border: rgba(245, 158, 11, 0.34);
+  --badge-bg: rgba(245, 158, 11, 0.08);
+  --badge-color: var(--warning);
+  --badge-glow: rgba(245, 158, 11, 0.16);
+}
+
+.variant-deployed {
+  --badge-border: rgba(34, 197, 94, 0.34);
+  --badge-bg: rgba(34, 197, 94, 0.08);
+  --badge-color: var(--success);
+  --badge-glow: rgba(34, 197, 94, 0.16);
+}
+
+.variant-caseStudy {
+  --badge-border: rgba(217, 70, 239, 0.34);
+  --badge-bg: rgba(217, 70, 239, 0.08);
+  --badge-color: var(--neon-magenta);
+  --badge-glow: rgba(217, 70, 239, 0.18);
+}
+
+.variant-private {
+  --badge-border: rgba(239, 68, 68, 0.32);
+  --badge-bg: rgba(239, 68, 68, 0.08);
+  --badge-color: var(--danger);
+  --badge-glow: rgba(239, 68, 68, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    transition: none;
+  }
+
+  .badge:hover {
+    transform: none;
+  }
+}
