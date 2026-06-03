@@ -1,5 +1,7 @@
 import type { Project } from "@/modules/projects/domain/Project";
-import { SurfaceCard } from "@/shared/ui/card/SurfaceCard";
+
+import { ProjectDetailSection } from "./ProjectDetailSection";
+import styles from "./ProjectDecisions.module.css";
 
 interface ProjectDecisionsProps {
   project: Project;
@@ -7,17 +9,22 @@ interface ProjectDecisionsProps {
 
 export function ProjectDecisions({ project }: ProjectDecisionsProps) {
   return (
-    <SurfaceCard as="section" className="responsive-stack" aria-labelledby="project-decisions-title">
-      <h2 id="project-decisions-title">Decisiones técnicas</h2>
-
-      <ul>
+    <ProjectDetailSection
+      title="Decisiones técnicas"
+      titleId="project-decisions-title"
+      tone="magenta"
+    >
+      <ul className={styles.list}>
         {project.decisions.map((decision) => (
-          <li key={decision.title}>
-            <strong>{decision.title}:</strong> {decision.description}
-            {decision.reason ? <> Motivo: {decision.reason}</> : null}
+          <li className={styles.item} key={decision.title}>
+            <span className={styles.itemTitle}>{decision.title}</span>
+            <span className={styles.itemDesc}>{decision.description}</span>
+            {decision.reason ? (
+              <span className={styles.itemReason}>Motivo: {decision.reason}</span>
+            ) : null}
           </li>
         ))}
       </ul>
-    </SurfaceCard>
+    </ProjectDetailSection>
   );
 }

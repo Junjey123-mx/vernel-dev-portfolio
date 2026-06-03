@@ -71,7 +71,12 @@
   min-height: 0;
 }
 
-.badges,
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
 .stack,
 .actions {
   display: flex;

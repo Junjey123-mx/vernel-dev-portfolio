@@ -12,7 +12,6 @@ const navigationItems: NavigationItem[] = [
   { label: "Proyectos", to: "/proyectos" },
   { label: "Stack", to: "/stack" },
   { label: "Proceso", to: "/proceso" },
-  { label: "Sobre mí", to: "/sobre-mi" },
 ];
 
 function getNavLinkClassName(isActive: boolean) {
@@ -23,10 +22,6 @@ export function Navbar() {
   const { pathname } = useLocation();
 
   function isNavigationItemActive(item: NavigationItem) {
-    if (item.to === "/sobre-mi") {
-      return pathname === "/sobre-mi";
-    }
-
     return item.end ? pathname === item.to : pathname.startsWith(item.to);
   }
 

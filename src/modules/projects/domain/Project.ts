@@ -49,6 +49,7 @@ export interface GithubRepoRef {
   name: string;
   url: string;
   branch?: string;
+  label?: string;
 }
 
 export interface ProjectTech {
@@ -112,7 +113,7 @@ export interface Project {
   challenges: ProjectChallenge[];
   improvements: string[];
   links: ProjectLink[];
-  github?: GithubRepoRef;
+  githubRepos?: GithubRepoRef[];
   images: ProjectImage[];
   metrics?: ProjectMetric[];
   featured?: boolean;

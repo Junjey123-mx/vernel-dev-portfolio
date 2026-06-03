@@ -6,8 +6,6 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { TechBadge } from "@/shared/ui/badge/TechBadge";
-import { SpotlightCard } from "@/shared/ui/spotlight-card/SpotlightCard";
 import { SurfaceCard } from "@/shared/ui/card/SurfaceCard";
 
 import styles from "./AboutProfile.module.css";
@@ -59,40 +57,20 @@ const currentLearning = [
 
 export function AboutProfile() {
   return (
-    <div className="responsive-stack">
-      {/* Tarjeta principal de perfil */}
-      <SpotlightCard as="article" tone="cyan" variant="featured">
-        <div className={styles.profileCard}>
-          <div className={styles.nameBlock}>
-            <h2 className={styles.name}>Vernel Josué</h2>
-            <p className={styles.bio}>
-              Soy estudiante de la Universidad del Valle de Guatemala y desarrollador web junior.
-              Me enfoco en construir interfaces modernas, consumir APIs REST, documentar decisiones
-              técnicas y convertir proyectos académicos o personales en evidencia real de aprendizaje.
-            </p>
-          </div>
-
-          <div className={styles.techCluster} aria-label="Tecnologías principales del perfil">
-            <TechBadge label="React" tone="cyan" />
-            <TechBadge label="TypeScript" tone="cyan" />
-            <TechBadge label="REST APIs" tone="blue" />
-            <TechBadge label="PostgreSQL" tone="blue" />
-            <TechBadge label="Docker" tone="magenta" />
-          </div>
-        </div>
-      </SpotlightCard>
-
-      {/* Contexto académico + forma de trabajo */}
-      <div className="responsive-grid">
-        <SurfaceCard as="section" aria-labelledby="about-facts-title">
-          <h2 id="about-facts-title" className={styles.focusSectionTitle} style={{ marginBottom: "1rem" }}>
+    <div className={styles.profileStack}>
+      <section className={styles.miniSection} aria-labelledby="about-facts-title">
+        <div className={styles.sectionHeader}>
+          <h2 id="about-facts-title" className={styles.sectionTitle}>
             Contexto académico
           </h2>
           <p className={styles.sectionIntro}>
-            Estudio en la Universidad del Valle de Guatemala, donde he trabajado proyectos de frontend,
-            backend, bases de datos, documentación técnica y despliegue. Mi portafolio reúne proyectos
-            que puedo explicar, ejecutar y defender técnicamente.
+            Estudio en la Universidad del Valle de Guatemala, donde he trabajado proyectos de
+            frontend, backend, bases de datos, documentación técnica y despliegue. Mi portafolio
+            reúne proyectos que puedo explicar, ejecutar y defender técnicamente.
           </p>
+        </div>
+
+        <SurfaceCard as="div" className={styles.sectionCard}>
           <div className={styles.factsGrid}>
             {academicFacts.map((fact) => {
               const FactIcon = fact.icon;
@@ -110,39 +88,20 @@ export function AboutProfile() {
             })}
           </div>
         </SurfaceCard>
+      </section>
 
-        <SurfaceCard as="section" aria-labelledby="about-focus-title">
-          <div className={styles.focusCard}>
-            <h2 className={styles.focusSectionTitle} id="about-focus-title">
-              Cómo trabajo
-            </h2>
-            <p className={styles.sectionIntro}>
-              Me gusta dividir los proyectos por fases, hacer commits pequeños, validar el build
-              antes de cerrar cambios y documentar las decisiones importantes para que el proyecto
-              pueda revisarse sin depender solo de una explicación oral.
-            </p>
-            <ul className={styles.focusList}>
-              {workHabits.map((item) => (
-                <li className={styles.focusItem} key={item}>
-                  <span className={styles.focusDot} aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </SurfaceCard>
-      </div>
-
-      {/* Aprendizaje actual */}
-      <SurfaceCard as="section" aria-labelledby="about-learning-title">
-        <div className={styles.learningCard}>
-          <h2 id="about-learning-title" className={styles.focusSectionTitle}>
+      <section className={styles.miniSection} aria-labelledby="about-learning-title">
+        <div className={styles.sectionHeader}>
+          <h2 id="about-learning-title" className={styles.sectionTitle}>
             Actualmente estoy fortaleciendo
           </h2>
-          <p className={styles.learningIntro}>
+          <p className={styles.sectionIntro}>
             Actualmente estoy fortaleciendo práctica técnica que me ayuda a convertir cada entrega
             en algo revisable, reproducible y mejor documentado.
           </p>
+        </div>
+
+        <SurfaceCard as="div" className={styles.sectionCard}>
           <div className={styles.learningGrid}>
             {currentLearning.map((item) => (
               <div className={styles.learningItem} key={item}>
@@ -155,8 +114,32 @@ export function AboutProfile() {
               </div>
             ))}
           </div>
+        </SurfaceCard>
+      </section>
+
+      <section className={styles.miniSection} aria-labelledby="about-focus-title">
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle} id="about-focus-title">
+            Cómo trabajo
+          </h2>
+          <p className={styles.sectionIntro}>
+            Me gusta dividir los proyectos por fases, hacer commits pequeños, validar el build
+            antes de cerrar cambios y documentar las decisiones importantes para que el proyecto
+            pueda revisarse sin depender solo de una explicación oral.
+          </p>
         </div>
-      </SurfaceCard>
+
+        <SurfaceCard as="div" className={styles.sectionCard}>
+          <ul className={styles.focusList}>
+            {workHabits.map((item) => (
+              <li className={styles.focusItem} key={item}>
+                <span className={styles.focusDot} aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SurfaceCard>
+      </section>
     </div>
   );
 }

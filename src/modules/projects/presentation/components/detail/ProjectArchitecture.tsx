@@ -1,5 +1,7 @@
 import type { Project, ProjectKind, ProjectStatus } from "@/modules/projects/domain/Project";
-import { SurfaceCard } from "@/shared/ui/card/SurfaceCard";
+
+import { ProjectDetailSection } from "./ProjectDetailSection";
+import styles from "./ProjectArchitecture.module.css";
 
 const kindLabelMap: Record<ProjectKind, string> = {
   academic: "Académico",
@@ -24,59 +26,70 @@ interface ProjectArchitectureProps {
 
 export function ProjectArchitecture({ project }: ProjectArchitectureProps) {
   return (
-    <SurfaceCard as="section" className="responsive-stack" aria-labelledby="project-architecture-title">
-      <h2 id="project-architecture-title">Arquitectura y evidencias</h2>
-
-      <dl>
-        <div>
-          <dt>Tipo de proyecto</dt>
-          <dd>{kindLabelMap[project.kind]}</dd>
+    <ProjectDetailSection
+      title="Arquitectura y evidencias"
+      titleId="project-architecture-title"
+      tone="blue"
+    >
+      <dl className={styles.metaList}>
+        <div className={styles.metaItem}>
+          <dt className={styles.metaLabel}>Tipo</dt>
+          <dd className={styles.metaValue}>{kindLabelMap[project.kind]}</dd>
         </div>
 
-        <div>
-          <dt>Estado</dt>
-          <dd>{statusLabelMap[project.status]}</dd>
+        <div className={styles.metaItem}>
+          <dt className={styles.metaLabel}>Estado</dt>
+          <dd className={styles.metaValue}>{statusLabelMap[project.status]}</dd>
         </div>
 
         {project.startedAt ? (
-          <div>
-            <dt>Inicio</dt>
-            <dd>{project.startedAt}</dd>
+          <div className={styles.metaItem}>
+            <dt className={styles.metaLabel}>Inicio</dt>
+            <dd className={styles.metaValue}>{project.startedAt}</dd>
           </div>
         ) : null}
 
         {project.completedAt ? (
-          <div>
-            <dt>Cierre</dt>
-            <dd>{project.completedAt}</dd>
+          <div className={styles.metaItem}>
+            <dt className={styles.metaLabel}>Cierre</dt>
+            <dd className={styles.metaValue}>{project.completedAt}</dd>
           </div>
         ) : null}
 
-        {project.github ? (
-          <div>
-            <dt>Repositorio principal</dt>
-            <dd>
-              <a href={project.github.url} target="_blank" rel="noreferrer">
-                {project.github.owner}/{project.github.name}
-              </a>
-            </dd>
-          </div>
-        ) : null}
+        {project.githubRepos && project.githubRepos.length > 0
+          ? project.githubRepos.map((repo) => (
+              <div className={styles.metaItem} key={`${repo.owner}/${repo.name}`}>
+                <dt className={styles.metaLabel}>
+                  {repo.label ?? "Repositorio"}
+                </dt>
+                <dd className={styles.metaValue}>
+                  <a
+                    className={styles.repoLink}
+                    href={repo.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {repo.owner}/{repo.name}
+                  </a>
+                </dd>
+              </div>
+            ))
+          : null}
       </dl>
 
       {project.metrics && project.metrics.length > 0 ? (
-        <div className="responsive-grid">
+        <div className={styles.metricsGrid}>
           {project.metrics.map((metric) => (
-            <article key={metric.label}>
-              <h3>{metric.label}</h3>
-              <p>
-                <strong>{metric.value}</strong>
-              </p>
-              {metric.description ? <p>{metric.description}</p> : null}
-            </article>
+            <div className={styles.metricCard} key={metric.label}>
+              <p className={styles.metricValue}>{metric.value}</p>
+              <p className={styles.metricLabel}>{metric.label}</p>
+              {metric.description ? (
+                <p className={styles.metricDesc}>{metric.description}</p>
+              ) : null}
+            </div>
           ))}
         </div>
       ) : null}
-    </SurfaceCard>
+    </ProjectDetailSection>
   );
 }

@@ -30,6 +30,7 @@ function formatNumber(value?: number | null) {
   return new Intl.NumberFormat("es-GT").format(value);
 }
 
+
 function getPrimaryLanguage(
   languages?: Record<string, number> | null,
   fallbackLanguage?: string | null,
@@ -109,6 +110,7 @@ export function GithubStatsCard({ repository }: GithubStatsCardProps) {
   const contributors = contributorsResult?.data ?? [];
   const visibleContributors = contributors.slice(0, 3);
   const primaryLanguage = getPrimaryLanguage(languagesResult?.data, repo?.language);
+
 
   return (
     <SurfaceCard as="section" className={styles.card} aria-labelledby="github-stats-title">

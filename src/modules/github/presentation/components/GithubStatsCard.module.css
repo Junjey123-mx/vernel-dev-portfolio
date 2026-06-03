@@ -89,10 +89,12 @@
 .statItem {
   display: grid;
   gap: 0.35rem;
+  min-width: 0;
   border: 1px solid rgba(77, 232, 232, 0.12);
   border-radius: var(--radius-md);
   background: rgba(77, 232, 232, 0.04);
   padding: 0.85rem;
+  overflow: hidden;
 }
 
 .statItem dt {
@@ -106,10 +108,13 @@
 
 .statItem dd {
   margin: 0;
+  min-width: 0;
   color: var(--color-text);
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: clamp(0.88rem, 1.4vw, 1.2rem);
   font-weight: 800;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .contributorsBlock {

@@ -1,0 +1,90 @@
+.aboutIntro {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+  scroll-margin-top: 120px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.58fr);
+  align-items: stretch;
+  gap: clamp(1.25rem, 4vw, 2rem);
+}
+
+.copyBorder,
+.photoBorder {
+  width: 100%;
+  height: 100%;
+  box-shadow:
+    0 0 28px rgba(77, 232, 232, 0.1),
+    0 0 44px rgba(217, 70, 239, 0.07);
+}
+
+.cardContent,
+.photoContent {
+  height: 100%;
+}
+
+.copy {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  height: 100%;
+  min-height: 22rem;
+  background:
+    linear-gradient(180deg, rgba(7, 22, 29, 0.58), rgba(5, 7, 13, 0.78)),
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.08), transparent 42%);
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+}
+
+.copy::before,
+.photoFrame::before {
+  content: "";
+  position: absolute;
+  inset: 0.85rem;
+  pointer-events: none;
+  border: 1px solid rgba(77, 232, 232, 0.08);
+  border-radius: 1.35rem;
+  z-index: 2;
+}
+
+.copy p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.photoContent > * {
+  height: 100%;
+}
+
+.photoFrame {
+  position: relative;
+  height: 100%;
+  min-height: 22rem;
+  background:
+    linear-gradient(180deg, rgba(7, 22, 29, 0.32), rgba(5, 7, 13, 0.72)),
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.12), transparent 42%);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  min-height: 22rem;
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.04);
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .photo {
+    max-height: 26rem;
+  }
+}

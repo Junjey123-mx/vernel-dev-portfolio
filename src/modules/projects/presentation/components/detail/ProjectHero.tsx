@@ -11,6 +11,8 @@ import type { ProjectBadgeVariant } from "@/shared/ui/badge/ProjectBadge";
 import { GlassCard } from "@/shared/ui/card/GlassCard";
 import { SectionHeader } from "@/shared/ui/section-header/SectionHeader";
 
+import styles from "./ProjectHero.module.css";
+
 const categoryLabelMap: Record<ProjectCategory, string> = {
   academic: "Académico",
   api: "API",
@@ -72,8 +74,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
   const image = getPrimaryImage(project);
 
   return (
-    <>
-      <Link to="/proyectos">← Volver a proyectos</Link>
+    <div className={styles.hero}>
+      <Link className={styles.backLink} to="/proyectos">← Volver a proyectos</Link>
 
       <SectionHeader
         eyebrow={`${kindLabelMap[project.kind]} · ${statusLabelMap[project.status]}`}
@@ -93,10 +95,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       </div>
 
       {image ? (
-        <GlassCard as="div" variant="featured">
-          <img src={image.src} alt={image.alt} loading="lazy" />
-        </GlassCard>
+        <div className={styles.imageWrap}>
+          <GlassCard as="div" variant="featured">
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </GlassCard>
+        </div>
       ) : null}
-    </>
+    </div>
   );
 }

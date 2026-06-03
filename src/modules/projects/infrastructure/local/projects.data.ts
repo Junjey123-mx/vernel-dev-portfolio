@@ -120,8 +120,11 @@ export const projects: Project[] = [
       "Implementar paginación cursor-based en catálogo y reportes para escalar a inventarios grandes.",
     ],
     links: [
-      { label: "Demo cliente", type: "demo", url: "", external: true },
-      { label: "API backend", type: "api", url: "", external: true },
+      { label: "Demo cliente", type: "demo", url: "https://super-marshmallow-8abd8e.netlify.app/", external: true },
+      { label: "Código fuente", type: "repository", url: "https://github.com/Junjey123-mx/retrosound", external: true },
+    ],
+    githubRepos: [
+      { owner: "Junjey123-mx", name: "retrosound", url: "https://github.com/Junjey123-mx/retrosound" },
     ],
     images: [
       { src: "/images/projects/retrosound.png", alt: "Captura del proyecto RetroSound Store" },
@@ -262,6 +265,10 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Demo en producción", type: "demo", url: "http://158.23.57.118", external: true },
+      { label: "Código fuente", type: "repository", url: "https://github.com/asanabria-2021067/proyecto-ingenieria-software", external: true },
+    ],
+    githubRepos: [
+      { owner: "asanabria-2021067", name: "proyecto-ingenieria-software", url: "https://github.com/asanabria-2021067/proyecto-ingenieria-software" },
     ],
     images: [{ src: "/images/projects/uvgenius.png", alt: "Captura del proyecto UVGenius" }],
     metrics: [
@@ -395,8 +402,13 @@ export const projects: Project[] = [
       "Configurar migraciones de base de datos con Alembic para gestionar cambios de esquema de forma reproducible.",
     ],
     links: [
-      { label: "API (Vercel)", type: "api", url: "", external: true },
-      { label: "Demo frontend", type: "demo", url: "", external: true },
+      { label: "Código fuente frontend", type: "repository", url: "https://github.com/Junjey123-mx/resident-evil-tracker-client", external: true },
+      { label: "Código fuente backend", type: "repository", url: "https://github.com/Junjey123-mx/resident-evil-tracker-api", external: true },
+      { label: "Demo frontend", type: "demo", url: "http://158.23.57.118/vernel/resident-evil-tracker-client/", external: true },
+    ],
+    githubRepos: [
+      { owner: "Junjey123-mx", name: "resident-evil-tracker-client", url: "https://github.com/Junjey123-mx/resident-evil-tracker-client", label: "Frontend" },
+      { owner: "Junjey123-mx", name: "resident-evil-tracker-api", url: "https://github.com/Junjey123-mx/resident-evil-tracker-api", label: "API" },
     ],
     images: [
       {
@@ -534,11 +546,9 @@ export const projects: Project[] = [
         external: true,
       },
     ],
-    github: {
-      owner: "Junjey123-mx",
-      name: "TRONSnake",
-      url: "https://github.com/Junjey123-mx/TRONSnake",
-    },
+    githubRepos: [
+      { owner: "Junjey123-mx", name: "TRONSnake", url: "https://github.com/Junjey123-mx/TRONSnake" },
+    ],
     images: [{ src: "/images/projects/tron-snake.png", alt: "Captura del juego TRONSnake" }],
     metrics: [
       { label: "Commits", value: "21", description: "Con convención Conventional Commits" },
@@ -664,11 +674,9 @@ export const projects: Project[] = [
         external: true,
       },
     ],
-    github: {
-      owner: "Junjey123-mx",
-      name: "CalculaTRON",
-      url: "https://github.com/Junjey123-mx/CalculaTRON",
-    },
+    githubRepos: [
+      { owner: "Junjey123-mx", name: "CalculaTRON", url: "https://github.com/Junjey123-mx/CalculaTRON" },
+    ],
     images: [
       { src: "/images/projects/calculatron.png", alt: "Captura del proyecto CalculaTRON" },
     ],
@@ -789,7 +797,13 @@ export const projects: Project[] = [
       "Extraer los SharedPreferences a un SessionManager propio en lugar de acceder a ellos directamente en los composables.",
       "Implementar controles de navegación más explícitos para usuarios nuevos en la aplicación.",
     ],
-    links: [],
+    links: [
+      { label: "Código fuente frontend", type: "repository", url: "https://github.com/PabloVS044/TripWise", external: true },
+      { label: "Código fuente backend", type: "repository", url: "https://github.com/PabloVS044/TripWise-Backend", external: true },
+    ],
+    githubRepos: [
+      { owner: "PabloVS044", name: "TripWise", url: "https://github.com/PabloVS044/TripWise" },
+    ],
     images: [
       { src: "/images/projects/tripwise.png", alt: "Captura del proyecto TripWise Android" },
     ],
@@ -901,7 +915,9 @@ export const projects: Project[] = [
       "Grabar un video del modo IA vs IA para visualizar el proyecto sin necesidad de compilarlo.",
       "Agregar al menos un test unitario para la lógica de evaluación heurística de la IA.",
     ],
-    links: [],
+    links: [
+      { label: "Código fuente", type: "repository", url: "https://github.com/asanabria-2021067/ConcurrentTetris-Pthreads", external: true },
+    ],
     images: [
       {
         src: "/images/projects/tetris-concurrente.png",

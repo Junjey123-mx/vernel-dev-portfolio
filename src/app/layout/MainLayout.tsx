@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 
 import { Footer } from "@/app/layout/Footer";
 import { HashScroll } from "@/app/layout/HashScroll";
@@ -20,6 +20,7 @@ export function MainLayout() {
 
       <ParticlesBackground className="app-particles" variant="page" />
       <HashScroll />
+      <ScrollRestoration />
 
       <main id="main-content" className="responsive-container responsive-section">
         <PageTransition>

@@ -1,0 +1,60 @@
+.page {
+  display: grid;
+  gap: 0;
+}
+
+/* Suppress the global page-transition > article::before neon divider —
+   the detail hero already provides visual entry. Double-class raises
+   specificity above the global rule (0,2,0 > 0,1,1). */
+.page.page::before {
+  content: none;
+}
+
+/* Every group after the hero gets a neon divider + padding */
+.group {
+  position: relative;
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(77, 232, 232, 0.18) 18%,
+    rgba(77, 232, 232, 0.72) 50%,
+    rgba(77, 232, 232, 0.18) 82%,
+    transparent
+  );
+  box-shadow:
+    0 0 10px rgba(77, 232, 232, 0.45),
+    0 0 28px rgba(77, 232, 232, 0.18);
+  pointer-events: none;
+}
+
+/* Two-column layout for side-by-side sections */
+.splitGroup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: stretch;
+}
+
+.githubStack {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 768px) {
+  .splitGroup {
+    grid-template-columns: 1fr;
+  }
+}
