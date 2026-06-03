@@ -1,0 +1,282 @@
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 2.15rem;
+  top: 3.5rem;
+  bottom: 3.5rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(77, 232, 232, 0.35) 12%,
+    rgba(47, 128, 255, 0.25) 50%,
+    rgba(217, 70, 239, 0.35) 88%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.8rem 1fr;
+  gap: 1.5rem;
+  padding-bottom: 1.75rem;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.stepLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+}
+
+.numberBubble {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(77, 232, 232, 0.35);
+  border-radius: 999px;
+  background: var(--color-bg-soft);
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow:
+    0 0 0 3px var(--color-bg),
+    0 0 16px rgba(77, 232, 232, 0.18);
+  flex-shrink: 0;
+}
+
+.stepIcon {
+  color: var(--color-text-soft);
+  margin-top: 0.25rem;
+}
+
+.stepCard {
+  padding: 1.35rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at top left, rgba(77, 232, 232, 0.04), transparent 55%),
+    rgba(7, 22, 29, 0.65);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.stepCard:hover {
+  border-color: rgba(77, 232, 232, 0.28);
+  box-shadow: 0 0 24px rgba(77, 232, 232, 0.08);
+}
+
+.stepHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.stepTitle {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stepDescription {
+  margin: 0 0 1.1rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.stepGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.practicesBlock,
+.projectsBlock {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.blockTitle {
+  margin: 0 0 0.4rem;
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.practiceList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.38rem;
+}
+
+.practiceItem {
+  position: relative;
+  color: var(--color-text);
+  font-size: 0.87rem;
+  line-height: 1.5;
+  padding-left: 1.1rem;
+}
+
+.practiceItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 999px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px rgba(77, 232, 232, 0.6);
+}
+
+.projectsCluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.toneBlue .numberBubble {
+  border-color: rgba(47, 128, 255, 0.35);
+  color: var(--neon-blue);
+  box-shadow:
+    0 0 0 3px var(--color-bg),
+    0 0 16px rgba(47, 128, 255, 0.18);
+}
+
+.toneBlue .stepCard:hover {
+  border-color: rgba(47, 128, 255, 0.28);
+  box-shadow: 0 0 24px rgba(47, 128, 255, 0.08);
+}
+
+.toneBlue .blockTitle {
+  color: var(--neon-blue);
+}
+
+.toneBlue .practiceItem::before {
+  background: var(--neon-blue);
+  box-shadow: 0 0 8px rgba(47, 128, 255, 0.6);
+}
+
+.toneMagenta .numberBubble {
+  border-color: rgba(217, 70, 239, 0.35);
+  color: var(--neon-magenta);
+  box-shadow:
+    0 0 0 3px var(--color-bg),
+    0 0 16px rgba(217, 70, 239, 0.18);
+}
+
+.toneMagenta .stepCard:hover {
+  border-color: rgba(217, 70, 239, 0.28);
+  box-shadow: 0 0 24px rgba(217, 70, 239, 0.08);
+}
+
+.toneMagenta .blockTitle {
+  color: var(--neon-magenta);
+}
+
+.toneMagenta .practiceItem::before {
+  background: var(--neon-magenta);
+  box-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
+}
+
+.tonePurple .numberBubble {
+  border-color: rgba(139, 92, 246, 0.35);
+  color: var(--neon-purple);
+  box-shadow:
+    0 0 0 3px var(--color-bg),
+    0 0 16px rgba(139, 92, 246, 0.18);
+}
+
+.tonePurple .stepCard:hover {
+  border-color: rgba(139, 92, 246, 0.28);
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.08);
+}
+
+.tonePurple .blockTitle {
+  color: var(--neon-purple);
+}
+
+.tonePurple .practiceItem::before {
+  background: var(--neon-purple);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 1.65rem;
+  }
+
+  .step {
+    grid-template-columns: 3.8rem 1fr;
+    gap: 1rem;
+  }
+
+  .numberBubble {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 0.66rem;
+  }
+
+  .stepGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline::before {
+    display: none;
+  }
+
+  .step {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .stepLeft {
+    flex-direction: row;
+    padding-top: 0;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .stepIcon {
+    margin-top: 0;
+  }
+
+  .stepCard {
+    padding: 1rem 1.1rem;
+  }
+}

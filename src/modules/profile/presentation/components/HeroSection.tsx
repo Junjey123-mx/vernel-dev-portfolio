@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { Rocket, Download } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 import { ParticlesBackground } from "@/shared/effects/particles/ParticlesBackground";
 
@@ -28,6 +30,7 @@ export function HeroSection() {
 
           <div className={styles.actions} aria-label="Acciones principales">
             <Link className={`${styles.cta} ${styles.primaryCta}`} to="/proyectos">
+              <Rocket size={15} aria-hidden="true" />
               Ver proyectos
             </Link>
 
@@ -37,6 +40,7 @@ export function HeroSection() {
               target="_blank"
               rel="noreferrer"
             >
+              <SiGithub aria-hidden="true" style={{ width: 15, height: 15 }} />
               GitHub
             </a>
 
@@ -46,6 +50,7 @@ export function HeroSection() {
               target="_blank"
               rel="noreferrer"
             >
+              <Download size={15} aria-hidden="true" />
               Descargar CV
             </a>
           </div>

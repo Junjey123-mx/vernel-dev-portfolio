@@ -1,19 +1,40 @@
+import {
+  Search,
+  Boxes,
+  Database,
+  GitBranch,
+  FileText,
+  Rocket,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 import { ProjectBadge } from "@/shared/ui/badge/ProjectBadge";
-import { SpotlightCard } from "@/shared/ui/spotlight-card/SpotlightCard";
-import type { SpotlightCardTone } from "@/shared/ui/spotlight-card/SpotlightCard";
+
+import styles from "./ProcessTimeline.module.css";
+
+type ProcessTone = "cyan" | "blue" | "magenta" | "purple";
 
 interface ProcessStep {
   description: string;
+  icon: LucideIcon;
   number: string;
   practices: string[];
   projects: string[];
   title: string;
-  tone: SpotlightCardTone;
+  tone: ProcessTone;
 }
+
+const toneClassMap: Record<ProcessTone, string> = {
+  cyan: "",
+  blue: styles.toneBlue,
+  magenta: styles.toneMagenta,
+  purple: styles.tonePurple,
+};
 
 const processSteps: ProcessStep[] = [
   {
     number: "01",
+    icon: Search,
     title: "Análisis del problema",
     description:
       "Empiezo identificando el objetivo real del proyecto, los requisitos de entrega y el alcance mínimo que debe funcionar antes de mejorar la interfaz.",
@@ -27,6 +48,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     number: "02",
+    icon: Boxes,
     title: "Arquitectura modular",
     description:
       "Organizo el código por dominios, módulos y responsabilidades para que cada parte del sistema tenga una función clara y defendible.",
@@ -40,6 +62,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     number: "03",
+    icon: Database,
     title: "API, datos y estados",
     description:
       "Conecto la interfaz con fuentes de datos usando estados de carga, error y vacío para que la experiencia no dependa de respuestas perfectas.",
@@ -53,6 +76,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     number: "04",
+    icon: GitBranch,
     title: "Git, commits y revisión",
     description:
       "Trabajo con commits pequeños, auditorías por fase y revisión de archivos exactos para mantener el repositorio limpio y fácil de evaluar.",
@@ -66,9 +90,10 @@ const processSteps: ProcessStep[] = [
   },
   {
     number: "05",
+    icon: FileText,
     title: "Documentación defendible",
     description:
-      "Documento decisiones técnicas, instalación, rutas, credenciales de prueba cuando aplican y evidencia de cumplimiento para que el proyecto pueda ser revisado.",
+      "Documento decisiones técnicas, instalación, rutas y evidencia de cumplimiento para que el proyecto pueda ser revisado sin fricción.",
     practices: [
       "README con instrucciones claras",
       "Explicar decisiones y límites del proyecto",
@@ -79,6 +104,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     number: "06",
+    icon: Rocket,
     title: "Deploy y validación final",
     description:
       "Cierro verificando que el proyecto compile, que las rutas principales funcionen y que el resultado pueda abrirse desde un entorno público o reproducible.",
@@ -94,38 +120,57 @@ const processSteps: ProcessStep[] = [
 
 export function ProcessTimeline() {
   return (
-    <div className="responsive-stack" aria-label="Línea de tiempo del proceso de desarrollo">
-      {processSteps.map((step) => (
-        <SpotlightCard as="article" key={step.number} tone={step.tone} variant="featured">
-          <div className="responsive-stack">
-            <div>
-              <p>{step.number}</p>
-              <h2>{step.title}</h2>
-              <p>{step.description}</p>
+    <div className={styles.timeline} aria-label="Línea de tiempo del proceso de desarrollo">
+      {processSteps.map((step) => {
+        const StepIcon = step.icon;
+        const toneClass = toneClassMap[step.tone];
+
+        return (
+          <div
+            key={step.number}
+            className={[styles.step, toneClass].filter(Boolean).join(" ")}
+          >
+            <div className={styles.stepLeft} aria-hidden="true">
+              <div className={styles.numberBubble}>{step.number}</div>
+              <StepIcon
+                className={styles.stepIcon}
+                size={16}
+                aria-hidden="true"
+              />
             </div>
 
-            <div className="responsive-grid">
-              <section aria-labelledby={`process-practices-${step.number}`}>
-                <h3 id={`process-practices-${step.number}`}>Prácticas aplicadas</h3>
-                <ul>
-                  {step.practices.map((practice) => (
-                    <li key={practice}>{practice}</li>
-                  ))}
-                </ul>
-              </section>
+            <div className={styles.stepCard}>
+              <div className={styles.stepHeader}>
+                <h2 className={styles.stepTitle}>{step.title}</h2>
+              </div>
 
-              <section aria-labelledby={`process-projects-${step.number}`}>
-                <h3 id={`process-projects-${step.number}`}>Proyectos relacionados</h3>
-                <div className="responsive-cluster">
-                  {step.projects.map((project) => (
-                    <ProjectBadge key={project} label={project} variant="caseStudy" />
-                  ))}
+              <p className={styles.stepDescription}>{step.description}</p>
+
+              <div className={styles.stepGrid}>
+                <div className={styles.practicesBlock}>
+                  <p className={styles.blockTitle}>Prácticas aplicadas</p>
+                  <ul className={styles.practiceList}>
+                    {step.practices.map((practice) => (
+                      <li className={styles.practiceItem} key={practice}>
+                        {practice}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </section>
+
+                <div className={styles.projectsBlock}>
+                  <p className={styles.blockTitle}>Proyectos relacionados</p>
+                  <div className={styles.projectsCluster}>
+                    {step.projects.map((project) => (
+                      <ProjectBadge key={project} label={project} variant="caseStudy" />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </SpotlightCard>
-      ))}
+        );
+      })}
     </div>
   );
 }

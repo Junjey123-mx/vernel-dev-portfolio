@@ -190,6 +190,9 @@ img {
 }
 
 .navbar-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
   border-color: rgba(217, 70, 239, 0.38);
   color: var(--color-text);
   background:
@@ -273,6 +276,9 @@ img {
 }
 
 .footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
   color: var(--color-text-muted);

@@ -1,0 +1,49 @@
+.techIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.techIcon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.size-sm {
+  font-size: 0.9rem;
+}
+
+.size-md {
+  font-size: 1.2rem;
+}
+
+.size-lg {
+  font-size: 1.65rem;
+}
+
+.size-xl {
+  font-size: 2.2rem;
+}
+
+.glow-cyan {
+  filter: drop-shadow(0 0 6px rgba(77, 232, 232, 0.55));
+}
+
+.glow-blue {
+  filter: drop-shadow(0 0 6px rgba(47, 128, 255, 0.55));
+}
+
+.glow-magenta {
+  filter: drop-shadow(0 0 6px rgba(217, 70, 239, 0.55));
+}
+
+.glow-purple {
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.55));
+}
+
+.glow-neutral {
+  filter: none;
+}

@@ -45,8 +45,9 @@
 }
 
 .status {
-  position: relative;
-  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
   border: 1px solid rgba(34, 197, 94, 0.28);
   border-radius: 999px;
   background: rgba(34, 197, 94, 0.08);
@@ -56,20 +57,16 @@
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.36rem 0.58rem 0.36rem 1.35rem;
+  padding: 0.36rem 0.65rem;
 }
 
-.status::before {
-  content: "";
-  position: absolute;
-  left: 0.58rem;
-  top: 50%;
+.statusDot {
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 999px;
   background: var(--success);
   box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
-  transform: translateY(-50%);
+  flex-shrink: 0;
 }
 
 .signalList {

@@ -1,37 +1,19 @@
 import { NavLink } from "react-router-dom";
+import { Download } from "lucide-react";
 
 interface NavigationItem {
+  end?: boolean;
   label: string;
   to: string;
-  end?: boolean;
 }
 
 const navigationItems: NavigationItem[] = [
-  {
-    label: "Inicio",
-    to: "/",
-    end: true,
-  },
-  {
-    label: "Proyectos",
-    to: "/proyectos",
-  },
-  {
-    label: "Stack",
-    to: "/stack",
-  },
-  {
-    label: "Proceso",
-    to: "/proceso",
-  },
-  {
-    label: "Sobre mí",
-    to: "/sobre-mi",
-  },
-  {
-    label: "Contacto",
-    to: "/contacto",
-  },
+  { label: "Inicio", to: "/", end: true },
+  { label: "Proyectos", to: "/proyectos" },
+  { label: "Stack", to: "/stack" },
+  { label: "Proceso", to: "/proceso" },
+  { label: "Sobre mí", to: "/sobre-mi" },
+  { label: "Contacto", to: "/contacto" },
 ];
 
 function getNavLinkClassName({ isActive }: { isActive: boolean }) {
@@ -66,6 +48,7 @@ export function Navbar() {
           rel="noreferrer"
           aria-label="Abrir CV de Vernel Josué en una nueva pestaña"
         >
+          <Download size={13} aria-hidden="true" />
           CV
         </a>
       </nav>

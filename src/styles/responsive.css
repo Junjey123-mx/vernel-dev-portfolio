@@ -34,6 +34,11 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
 }
 
+.responsive-grid > *,
+.responsive-split > * {
+  min-width: 0;
+}
+
 .responsive-stack {
   display: flex;
   flex-direction: column;
@@ -125,5 +130,20 @@ body {
 
   .responsive-grid {
     grid-template-columns: 1fr;
+  }
+
+  .responsive-cluster {
+    align-items: flex-start;
+  }
+
+  .navbar-logo {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .navbar-link,
+  .navbar-cv {
+    font-size: 0.76rem;
+    padding: 0.42rem 0.56rem;
   }
 }

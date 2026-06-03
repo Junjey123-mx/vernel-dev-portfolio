@@ -1,3 +1,6 @@
+import { Layers, Database, Rocket } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 import { SectionHeader } from "@/shared/ui/section-header/SectionHeader";
 import { SpotlightCard } from "@/shared/ui/spotlight-card/SpotlightCard";
 import type { SpotlightCardTone } from "@/shared/ui/spotlight-card/SpotlightCard";
@@ -7,6 +10,7 @@ import styles from "./StrengthsSection.module.css";
 interface Strength {
   bullets: string[];
   description: string;
+  icon: LucideIcon;
   number: string;
   tag: string;
   title: string;
@@ -16,6 +20,7 @@ interface Strength {
 const strengths: Strength[] = [
   {
     number: "01",
+    icon: Layers,
     title: "Frontend moderno",
     description:
       "Construcción de interfaces SPA con componentes reutilizables, estados claros y experiencia visual cuidada.",
@@ -25,6 +30,7 @@ const strengths: Strength[] = [
   },
   {
     number: "02",
+    icon: Database,
     title: "APIs y bases de datos",
     description:
       "Integración con servicios REST, manejo de estados de carga/error y modelado de datos para proyectos full-stack.",
@@ -34,6 +40,7 @@ const strengths: Strength[] = [
   },
   {
     number: "03",
+    icon: Rocket,
     title: "Documentación y deploy",
     description:
       "Trabajo orientado a entregas defendibles: repos organizados, README útil, Docker y despliegues públicos.",
@@ -55,34 +62,42 @@ export function StrengthsSection() {
       />
 
       <div className={styles.grid}>
-        {strengths.map((strength) => (
-          <SpotlightCard
-            as="article"
-            className={styles.card}
-            contentClassName={styles.cardContent}
-            key={strength.title}
-            tone={strength.tone}
-            variant="featured"
-          >
-            <div className={styles.cardHeader}>
-              <span className={styles.number}>{strength.number}</span>
-              <span className={styles.tag}>{strength.tag}</span>
-            </div>
+        {strengths.map((strength) => {
+          const StrengthIcon = strength.icon;
+          return (
+            <SpotlightCard
+              as="article"
+              className={styles.card}
+              contentClassName={styles.cardContent}
+              key={strength.title}
+              tone={strength.tone}
+              variant="featured"
+            >
+              <div className={styles.cardHeader}>
+                <div className={styles.cardHeaderLeft}>
+                  <span className={styles.number}>{strength.number}</span>
+                  <div className={styles.iconWrap} aria-hidden="true">
+                    <StrengthIcon size={20} />
+                  </div>
+                </div>
+                <span className={styles.tag}>{strength.tag}</span>
+              </div>
 
-            <div className={styles.cardBody}>
-              <h3 className={styles.cardTitle}>{strength.title}</h3>
-              <p className={styles.cardDescription}>{strength.description}</p>
-            </div>
+              <div className={styles.cardBody}>
+                <h3 className={styles.cardTitle}>{strength.title}</h3>
+                <p className={styles.cardDescription}>{strength.description}</p>
+              </div>
 
-            <ul className={styles.bulletList}>
-              {strength.bullets.map((bullet) => (
-                <li className={styles.bulletItem} key={bullet}>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          </SpotlightCard>
-        ))}
+              <ul className={styles.bulletList}>
+                {strength.bullets.map((bullet) => (
+                  <li className={styles.bulletItem} key={bullet}>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </SpotlightCard>
+          );
+        })}
       </div>
     </section>
   );

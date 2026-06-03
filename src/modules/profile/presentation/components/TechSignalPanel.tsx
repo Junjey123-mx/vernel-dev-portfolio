@@ -1,28 +1,14 @@
 import { BorderRotate } from "@/shared/ui/animated-gradient-border/AnimatedGradientBorder";
+import { TechIcon } from "@/shared/ui/icon/TechIcon";
 
 import styles from "./TechSignalPanel.module.css";
 
 const signals = [
-  {
-    label: "React",
-    value: "UI modular",
-  },
-  {
-    label: "TypeScript",
-    value: "tipado seguro",
-  },
-  {
-    label: "REST APIs",
-    value: "consumo de datos",
-  },
-  {
-    label: "Docker",
-    value: "entornos reproducibles",
-  },
-  {
-    label: "PostgreSQL",
-    value: "datos relacionales",
-  },
+  { label: "React", value: "UI modular", glow: "cyan" as const },
+  { label: "TypeScript", value: "tipado seguro", glow: "blue" as const },
+  { label: "REST APIs", value: "consumo de datos", glow: "blue" as const },
+  { label: "Docker", value: "entornos reproducibles", glow: "magenta" as const },
+  { label: "PostgreSQL", value: "datos relacionales", glow: "purple" as const },
 ];
 
 const tags = ["SPA", "API-ready", "Deploy"];
@@ -39,13 +25,21 @@ export function TechSignalPanel() {
       <aside className={styles.panel} aria-label="Resumen técnico del perfil">
         <div className={styles.header}>
           <p className={styles.eyebrow}>Technical signal</p>
-          <p className={styles.status}>Online</p>
+          <span className={styles.status} aria-label="Estado: en línea">
+            <span className={styles.statusDot} aria-hidden="true" />
+            Online
+          </span>
         </div>
 
         <ul className={styles.signalList} aria-label="Stack técnico resumido">
           {signals.map((signal) => (
             <li className={styles.signalItem} key={signal.label}>
-              <span className={styles.signalDot} aria-hidden="true" />
+              <TechIcon
+                name={signal.label}
+                size="sm"
+                glow={signal.glow}
+                aria-hidden={true}
+              />
               <span className={styles.signalLabel}>{signal.label}</span>
               <span className={styles.signalValue}>{signal.value}</span>
             </li>

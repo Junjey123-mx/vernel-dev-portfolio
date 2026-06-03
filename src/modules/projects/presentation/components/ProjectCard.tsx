@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Eye, ExternalLink, Code2 } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 import type { Project, ProjectCategory, ProjectLink } from "@/modules/projects/domain/Project";
 import { ProjectBadge } from "@/shared/ui/badge/ProjectBadge";
@@ -68,18 +71,9 @@ function getPrimaryImage(project: Project) {
 }
 
 function getProjectTone(project: Project) {
-  if (project.categories.includes("fullstack")) {
-    return "cyan";
-  }
-
-  if (project.categories.includes("frontend")) {
-    return "blue";
-  }
-
-  if (project.categories.includes("mobile")) {
-    return "magenta";
-  }
-
+  if (project.categories.includes("fullstack")) return "cyan";
+  if (project.categories.includes("frontend")) return "blue";
+  if (project.categories.includes("mobile")) return "magenta";
   return "purple";
 }
 
@@ -88,7 +82,6 @@ function getFeaturedStack(project: Project) {
   const fallbackTech = project.stack.filter(
     (tech) => !featuredTech.some((featured) => featured.name === tech.name),
   );
-
   return [...featuredTech, ...fallbackTech].slice(0, 5);
 }
 
@@ -96,7 +89,17 @@ function getProjectLink(project: Project, type: ProjectLink["type"]) {
   return project.links.find((link) => link.type === type && link.url);
 }
 
+function ImageFallback({ title }: { title: string }) {
+  return (
+    <div className={styles.imageFallback} aria-hidden="true">
+      <Code2 className={styles.fallbackIcon} size={28} />
+      <span className={styles.fallbackText}>{title}</span>
+    </div>
+  );
+}
+
 export function ProjectCard({ className, featured = false, project }: ProjectCardProps) {
+  const [imgError, setImgError] = useState(false);
   const image = getPrimaryImage(project);
   const demoLink = getProjectLink(project, "demo");
   const repositoryLink = getProjectLink(project, "repository");
@@ -112,9 +115,17 @@ export function ProjectCard({ className, featured = false, project }: ProjectCar
       variant={featured || project.featured ? "featured" : "default"}
     >
       <div className={styles.imageFrame}>
-        {image ? (
-          <img className={styles.image} src={image.src} alt={image.alt} loading="lazy" />
-        ) : null}
+        {image && !imgError ? (
+          <img
+            className={styles.image}
+            src={image.src}
+            alt={image.alt}
+            loading="lazy"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <ImageFallback title={project.shortTitle ?? project.title} />
+        )}
       </div>
 
       <div className={styles.body}>
@@ -145,6 +156,7 @@ export function ProjectCard({ className, featured = false, project }: ProjectCar
 
         <div className={styles.actions} aria-label={`Acciones para ${project.title}`}>
           <Link className={styles.primaryAction} to={`/proyectos/${project.slug}`}>
+            <Eye size={13} aria-hidden="true" />
             Detalles
           </Link>
 
@@ -154,7 +166,9 @@ export function ProjectCard({ className, featured = false, project }: ProjectCar
               href={demoLink.url}
               target="_blank"
               rel="noreferrer"
+              aria-label={`Ver demo de ${project.title}`}
             >
+              <ExternalLink size={12} aria-hidden="true" />
               Demo
             </a>
           ) : null}
@@ -165,7 +179,9 @@ export function ProjectCard({ className, featured = false, project }: ProjectCar
               href={repositoryLink.url}
               target="_blank"
               rel="noreferrer"
+              aria-label={`Ver código de ${project.title} en GitHub`}
             >
+              <SiGithub aria-hidden="true" style={{ width: 12, height: 12 }} />
               Código
             </a>
           ) : null}
@@ -177,7 +193,7 @@ export function ProjectCard({ className, featured = false, project }: ProjectCar
               target="_blank"
               rel="noreferrer"
             >
-              Documentación
+              Docs
             </a>
           ) : null}
         </div>
