@@ -1,7 +1,11 @@
 import { Outlet } from "react-router-dom";
 
 import { Footer } from "@/app/layout/Footer";
+import { HashScroll } from "@/app/layout/HashScroll";
 import { Navbar } from "@/app/layout/Navbar";
+import { PageTransition } from "@/app/layout/PageTransition";
+import { ScrollProgressBar } from "@/app/layout/ScrollProgressBar";
+import { ParticlesBackground } from "@/shared/effects/particles/ParticlesBackground";
 
 export function MainLayout() {
   return (
@@ -10,10 +14,17 @@ export function MainLayout() {
         Saltar al contenido principal
       </a>
 
+      <ScrollProgressBar />
+
       <Navbar />
 
+      <ParticlesBackground className="app-particles" variant="page" />
+      <HashScroll />
+
       <main id="main-content" className="responsive-container responsive-section">
-        <Outlet />
+        <PageTransition>
+          <Outlet />
+        </PageTransition>
       </main>
 
       <Footer />

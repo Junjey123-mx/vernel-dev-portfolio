@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Download } from "lucide-react";
 
 interface NavigationItem {
@@ -13,31 +13,39 @@ const navigationItems: NavigationItem[] = [
   { label: "Stack", to: "/stack" },
   { label: "Proceso", to: "/proceso" },
   { label: "Sobre mí", to: "/sobre-mi" },
-  { label: "Contacto", to: "/contacto" },
 ];
 
-function getNavLinkClassName({ isActive }: { isActive: boolean }) {
+function getNavLinkClassName(isActive: boolean) {
   return isActive ? "navbar-link navbar-link--active" : "navbar-link";
 }
 
 export function Navbar() {
+  const { pathname } = useLocation();
+
+  function isNavigationItemActive(item: NavigationItem) {
+    if (item.to === "/sobre-mi") {
+      return pathname === "/sobre-mi";
+    }
+
+    return item.end ? pathname === item.to : pathname.startsWith(item.to);
+  }
+
   return (
     <header className="navbar-shell">
       <nav className="navbar responsive-container" aria-label="Navegación principal">
-        <NavLink className="navbar-logo" to="/" aria-label="Ir al inicio de Vernel.dev">
+        <Link className="navbar-logo" to="/" aria-label="Ir al inicio de Vernel.dev">
           Vernel.dev
-        </NavLink>
+        </Link>
 
         <div className="navbar-links" aria-label="Secciones del portafolio">
           {navigationItems.map((item) => (
-            <NavLink
+            <Link
               key={item.to}
-              className={getNavLinkClassName}
+              className={getNavLinkClassName(isNavigationItemActive(item))}
               to={item.to}
-              end={item.end}
             >
               {item.label}
-            </NavLink>
+            </Link>
           ))}
         </div>
 

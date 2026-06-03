@@ -93,6 +93,16 @@ export function ContactPanel() {
 
             <a
               className={`${styles.ctaBtn} ${styles.ctaBtnGhost}`}
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin aria-hidden="true" style={{ width: 15, height: 15 }} />
+              Ver LinkedIn
+            </a>
+
+            <a
+              className={`${styles.ctaBtn} ${styles.ctaBtnGhost}`}
               href="/cv/vernel-josue-cv.pdf"
               target="_blank"
               rel="noreferrer"

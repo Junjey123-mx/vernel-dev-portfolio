@@ -3,11 +3,8 @@
 }
 
 .cardContent {
-  display: grid;
-  height: 100%;
-}
-
-.cardContent > * {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -67,7 +64,9 @@
 }
 
 .body {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   gap: 1rem;
   min-height: 0;
 }
@@ -117,7 +116,7 @@
   gap: 0.38rem;
   min-height: 2.3rem;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--radius-btn);
   font-size: 0.82rem;
   font-weight: 800;
   text-decoration: none;

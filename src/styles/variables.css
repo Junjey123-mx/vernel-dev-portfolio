@@ -20,6 +20,7 @@
   --neon-blue: #2f80ff;
   --neon-magenta: #d946ef;
   --neon-purple: #8b5cf6;
+  --neon-orange: #ff7a1a;
 
   /* ─── Estados ─── */
   --success: #22c55e;
@@ -31,6 +32,7 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 20px;
+  --radius-btn: 8px;
 
   /* ─── Sombras ─── */
   --shadow-cyan: 0 0 18px rgba(77, 232, 232, 0.25);

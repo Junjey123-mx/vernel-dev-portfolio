@@ -24,22 +24,35 @@ export function ProjectDetailPage() {
 
   return (
     <section className="responsive-stack" aria-labelledby="project-detail-title">
-      <ProjectHero project={project} />
-      <ProjectOverview project={project} />
-      <ProjectStack project={project} />
+      <div className="animate-slide-up" style={{ animationDelay: "0ms" }}>
+        <ProjectHero project={project} />
+      </div>
 
-      <div className="responsive-grid">
+      <div className="animate-slide-up" style={{ animationDelay: "120ms" }}>
+        <ProjectOverview project={project} />
+      </div>
+
+      <div className="animate-slide-up" style={{ animationDelay: "220ms" }}>
+        <ProjectStack project={project} />
+      </div>
+
+      <div className="responsive-grid animate-slide-up" style={{ animationDelay: "320ms" }}>
         <ProjectArchitecture project={project} />
         <GithubStatsCard repository={project.github} />
       </div>
 
-      <div className="responsive-grid">
+      <div className="responsive-grid animate-slide-up" style={{ animationDelay: "400ms" }}>
         <ProjectHighlights project={project} />
         <ProjectDecisions project={project} />
       </div>
 
-      <ProjectChallenges project={project} />
-      <ProjectLinks project={project} />
+      <div className="animate-slide-up" style={{ animationDelay: "480ms" }}>
+        <ProjectChallenges project={project} />
+      </div>
+
+      <div className="animate-slide-up" style={{ animationDelay: "540ms" }}>
+        <ProjectLinks project={project} />
+      </div>
     </section>
   );
 }

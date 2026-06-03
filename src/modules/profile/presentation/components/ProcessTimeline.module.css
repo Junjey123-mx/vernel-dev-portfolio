@@ -69,21 +69,10 @@
   margin-top: 0.25rem;
 }
 
-.stepCard {
-  padding: 1.35rem 1.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(circle at top left, rgba(77, 232, 232, 0.04), transparent 55%),
-    rgba(7, 22, 29, 0.65);
-  transition:
-    border-color 200ms ease,
-    box-shadow 200ms ease;
-}
-
-.stepCard:hover {
-  border-color: rgba(77, 232, 232, 0.28);
-  box-shadow: 0 0 24px rgba(77, 232, 232, 0.08);
+/* SpotlightCard content layout */
+.stepContent {
+  display: flex;
+  flex-direction: column;
 }
 
 .stepHeader {
@@ -164,8 +153,12 @@
 .projectsCluster {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 0.35rem;
 }
+
+/* ─── Tone overrides ─── */
 
 .toneBlue .numberBubble {
   border-color: rgba(47, 128, 255, 0.35);
@@ -173,11 +166,6 @@
   box-shadow:
     0 0 0 3px var(--color-bg),
     0 0 16px rgba(47, 128, 255, 0.18);
-}
-
-.toneBlue .stepCard:hover {
-  border-color: rgba(47, 128, 255, 0.28);
-  box-shadow: 0 0 24px rgba(47, 128, 255, 0.08);
 }
 
 .toneBlue .blockTitle {
@@ -197,11 +185,6 @@
     0 0 16px rgba(217, 70, 239, 0.18);
 }
 
-.toneMagenta .stepCard:hover {
-  border-color: rgba(217, 70, 239, 0.28);
-  box-shadow: 0 0 24px rgba(217, 70, 239, 0.08);
-}
-
 .toneMagenta .blockTitle {
   color: var(--neon-magenta);
 }
@@ -217,11 +200,6 @@
   box-shadow:
     0 0 0 3px var(--color-bg),
     0 0 16px rgba(139, 92, 246, 0.18);
-}
-
-.tonePurple .stepCard:hover {
-  border-color: rgba(139, 92, 246, 0.28);
-  box-shadow: 0 0 24px rgba(139, 92, 246, 0.08);
 }
 
 .tonePurple .blockTitle {
@@ -274,9 +252,5 @@
 
   .stepIcon {
     margin-top: 0;
-  }
-
-  .stepCard {
-    padding: 1rem 1.1rem;
   }
 }

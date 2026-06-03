@@ -1,17 +1,22 @@
 import { AboutProfile } from "@/modules/profile/presentation/components/AboutProfile";
-import { SectionHeader } from "@/shared/ui/section-header/SectionHeader";
+import { ContactPanel } from "@/modules/profile/presentation/components/ContactPanel";
+import { PageHeroView } from "@/shared/ui/page-hero/PageHeroView";
 
 export function AboutPage() {
   return (
-    <section className="responsive-stack" aria-labelledby="about-title">
-      <SectionHeader
-        eyebrow="Sobre mí"
-        title="Perfil profesional en construcción"
-        titleId="about-title"
-        description="Una presentación breve de mi contexto académico, enfoque técnico y forma de convertir proyectos en evidencia real de aprendizaje."
-      />
-
+    <PageHeroView
+      contentLabel="Perfil profesional"
+      description="Una mirada breve a mi contexto universitario, mi forma de trabajar y el tipo de proyectos que estoy construyendo para convertir aprendizaje en evidencia real."
+      eyebrow="Sobre mí"
+      size="compact"
+      title="Perfil técnico y académico"
+      titleId="about-title"
+      tone="about"
+    >
       <AboutProfile />
-    </section>
+      <section id="contacto" className="anchor-section" aria-label="Contacto">
+        <ContactPanel />
+      </section>
+    </PageHeroView>
   );
 }

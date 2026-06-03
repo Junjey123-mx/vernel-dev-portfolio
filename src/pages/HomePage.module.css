@@ -1,0 +1,32 @@
+.home {
+  position: relative;
+  isolation: isolate;
+}
+
+.home > section {
+  position: relative;
+  z-index: 1;
+}
+
+.home::before,
+.home > section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(77, 232, 232, 0.18) 18%,
+    rgba(77, 232, 232, 0.72) 50%,
+    rgba(77, 232, 232, 0.18) 82%,
+    transparent
+  );
+  box-shadow:
+    0 0 10px rgba(77, 232, 232, 0.45),
+    0 0 28px rgba(77, 232, 232, 0.18);
+  pointer-events: none;
+}

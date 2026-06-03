@@ -43,11 +43,26 @@ export function SectionHeader({
       className={buildSectionHeaderClassName({ align, className })}
       {...headerProps}
     >
-      {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
-      <h2 className={styles.title} id={titleId}>
+      {eyebrow ? (
+        <p className={`${styles.eyebrow} animate-slide-up`} style={{ animationDelay: "0ms" }}>
+          {eyebrow}
+        </p>
+      ) : null}
+      <h2
+        className={`${styles.title} animate-slide-up`}
+        id={titleId}
+        style={{ animationDelay: eyebrow ? "100ms" : "0ms" }}
+      >
         {title}
       </h2>
-      {description ? <p className={styles.description}>{description}</p> : null}
+      {description ? (
+        <p
+          className={`${styles.description} animate-slide-up`}
+          style={{ animationDelay: eyebrow ? "200ms" : "100ms" }}
+        >
+          {description}
+        </p>
+      ) : null}
     </header>
   );
 }

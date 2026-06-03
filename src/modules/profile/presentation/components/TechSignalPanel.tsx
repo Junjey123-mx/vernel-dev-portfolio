@@ -16,8 +16,9 @@ const tags = ["SPA", "API-ready", "Deploy"];
 export function TechSignalPanel() {
   return (
     <BorderRotate
-      className={styles.panelBorder}
+      className={`${styles.panelBorder} animate-slide-up`}
       contentClassName={styles.panelContent}
+      style={{ animationDelay: '300ms' }}
       animationSpeed={2.6}
       borderRadius={32}
       borderWidth={1}
@@ -34,12 +35,14 @@ export function TechSignalPanel() {
         <ul className={styles.signalList} aria-label="Stack técnico resumido">
           {signals.map((signal) => (
             <li className={styles.signalItem} key={signal.label}>
-              <TechIcon
-                name={signal.label}
-                size="sm"
-                glow={signal.glow}
-                aria-hidden={true}
-              />
+              <span className={styles.iconSlot} aria-hidden="true">
+                <TechIcon
+                  name={signal.label}
+                  size="sm"
+                  glow={signal.glow}
+                  aria-hidden={true}
+                />
+              </span>
               <span className={styles.signalLabel}>{signal.label}</span>
               <span className={styles.signalValue}>{signal.value}</span>
             </li>

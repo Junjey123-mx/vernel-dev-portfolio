@@ -7,6 +7,7 @@ import styles from "./Particles.module.css";
 interface ParticlesBackgroundProps {
   className?: string;
   disabled?: boolean;
+  variant?: "hero" | "page";
 }
 
 function buildBackgroundClassName(className?: string) {
@@ -24,6 +25,7 @@ function getMediaQueryValue(query: string) {
 export function ParticlesBackground({
   className,
   disabled = false,
+  variant = "hero",
 }: ParticlesBackgroundProps) {
   const [isMobile, setIsMobile] = useState(() => getMediaQueryValue("(max-width: 768px)"));
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
@@ -62,18 +64,18 @@ export function ParticlesBackground({
     <div className={buildBackgroundClassName(className)} aria-hidden="true">
       <Particles
         alphaParticles
-        cameraDistance={20}
+        cameraDistance={variant === "page" ? 22 : 20}
         className={styles.particlesLayer}
         disableRotation={isMobile}
         moveParticlesOnHover={!isMobile}
-        particleBaseSize={isMobile ? 64 : 80}
+        particleBaseSize={variant === "page" ? (isMobile ? 72 : 96) : (isMobile ? 64 : 80)}
         particleColors={["#4de8e8", "#2f80ff", "#d946ef"]}
-        particleCount={isMobile ? 35 : 90}
+        particleCount={variant === "page" ? (isMobile ? 70 : 160) : (isMobile ? 35 : 90)}
         particleHoverFactor={isMobile ? 0 : 0.35}
-        particleSpread={isMobile ? 5 : 7}
+        particleSpread={variant === "page" ? (isMobile ? 6 : 9.5) : (isMobile ? 5 : 7)}
         pixelRatio={1}
         sizeRandomness={1}
-        speed={isMobile ? 0.035 : 0.05}
+        speed={variant === "page" ? (isMobile ? 0.04 : 0.06) : (isMobile ? 0.035 : 0.05)}
       />
     </div>
   );

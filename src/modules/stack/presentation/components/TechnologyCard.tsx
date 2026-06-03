@@ -1,6 +1,7 @@
 import type { Technology, TechnologyCategory } from "@/modules/stack/domain/Technology";
 import { TechIcon } from "@/shared/ui/icon/TechIcon";
 import { SpotlightCard } from "@/shared/ui/spotlight-card/SpotlightCard";
+import { ProjectChip } from "@/shared/ui/chip/ProjectChip";
 import { projects } from "@/modules/projects/infrastructure/local/projects.data";
 
 import styles from "./TechnologyCard.module.css";
@@ -103,7 +104,7 @@ export function TechnologyCard({ technology }: TechnologyCardProps) {
           <div className={styles.usedIn}>
             <span className={styles.usedInLabel}>En:</span>
             {projectTitles.map((title) => (
-              <span className={styles.projectChip} key={title}>{title}</span>
+              <ProjectChip key={title} label={title} />
             ))}
             {technology.projectSlugs.length === 0 && (
               <span className={styles.exploratoryChip}>Exploratorio</span>

@@ -23,8 +23,8 @@ const strengths: Strength[] = [
     icon: Layers,
     title: "Frontend moderno",
     description:
-      "Construcción de interfaces SPA con componentes reutilizables, estados claros y experiencia visual cuidada.",
-    bullets: ["React y TypeScript", "Arquitectura por módulos", "UI responsive y accesible"],
+      "Interfaces SPA claras, modulares y responsive, pensadas para crecer sin perder orden.",
+    bullets: ["React + TypeScript", "Componentes reutilizables", "Accesibilidad base"],
     tag: "Interface",
     tone: "cyan",
   },
@@ -33,8 +33,8 @@ const strengths: Strength[] = [
     icon: Database,
     title: "APIs y bases de datos",
     description:
-      "Integración con servicios REST, manejo de estados de carga/error y modelado de datos para proyectos full-stack.",
-    bullets: ["Consumo de APIs REST", "PostgreSQL y Prisma", "Estados con TanStack Query"],
+      "Conecto frontend con datos reales: peticiones, estados de carga y errores controlados.",
+    bullets: ["REST APIs", "PostgreSQL + Prisma", "TanStack Query"],
     tag: "Data flow",
     tone: "blue",
   },
@@ -43,8 +43,8 @@ const strengths: Strength[] = [
     icon: Rocket,
     title: "Documentación y deploy",
     description:
-      "Trabajo orientado a entregas defendibles: repos organizados, README útil, Docker y despliegues públicos.",
-    bullets: ["Git y GitHub", "Docker y entornos reproducibles", "Deploy en Vercel/Netlify"],
+      "Entregas publicables con repos organizados, README útil y entornos reproducibles.",
+    bullets: ["Git + GitHub", "Docker", "Vercel / Netlify"],
     tag: "Delivery",
     tone: "magenta",
   },

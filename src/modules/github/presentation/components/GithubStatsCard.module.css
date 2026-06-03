@@ -53,7 +53,7 @@
 .repoLink {
   flex: 0 0 auto;
   border: 1px solid rgba(77, 232, 232, 0.26);
-  border-radius: 999px;
+  border-radius: var(--radius-btn);
   background: rgba(77, 232, 232, 0.08);
   color: var(--color-text);
   font-size: 0.82rem;

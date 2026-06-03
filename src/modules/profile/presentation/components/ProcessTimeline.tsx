@@ -8,11 +8,13 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ProjectBadge } from "@/shared/ui/badge/ProjectBadge";
+import { ProjectChip } from "@/shared/ui/chip/ProjectChip";
+import { SpotlightCard } from "@/shared/ui/spotlight-card/SpotlightCard";
+import type { SpotlightCardTone } from "@/shared/ui/spotlight-card/SpotlightCard";
 
 import styles from "./ProcessTimeline.module.css";
 
-type ProcessTone = "cyan" | "blue" | "magenta" | "purple";
+type ProcessTone = SpotlightCardTone;
 
 interface ProcessStep {
   description: string;
@@ -139,7 +141,12 @@ export function ProcessTimeline() {
               />
             </div>
 
-            <div className={styles.stepCard}>
+            <SpotlightCard
+              as="div"
+              tone={step.tone}
+              variant="default"
+              contentClassName={styles.stepContent}
+            >
               <div className={styles.stepHeader}>
                 <h2 className={styles.stepTitle}>{step.title}</h2>
               </div>
@@ -159,15 +166,15 @@ export function ProcessTimeline() {
                 </div>
 
                 <div className={styles.projectsBlock}>
-                  <p className={styles.blockTitle}>Proyectos relacionados</p>
+                  <p className={styles.blockTitle}>Aplicado en proyectos</p>
                   <div className={styles.projectsCluster}>
                     {step.projects.map((project) => (
-                      <ProjectBadge key={project} label={project} variant="caseStudy" />
+                      <ProjectChip key={project} label={project} />
                     ))}
                   </div>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
         );
       })}

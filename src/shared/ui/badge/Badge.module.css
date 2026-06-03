@@ -156,10 +156,10 @@
 }
 
 .variant-caseStudy {
-  --badge-border: rgba(217, 70, 239, 0.34);
-  --badge-bg: rgba(217, 70, 239, 0.08);
-  --badge-color: var(--neon-magenta);
-  --badge-glow: rgba(217, 70, 239, 0.18);
+  --badge-border: rgba(255, 122, 26, 0.38);
+  --badge-bg: rgba(255, 122, 26, 0.08);
+  --badge-color: var(--neon-orange);
+  --badge-glow: rgba(255, 122, 26, 0.22);
 }
 
 .variant-private {
