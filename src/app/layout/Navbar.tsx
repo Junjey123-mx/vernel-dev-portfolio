@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Download } from "lucide-react";
 
 interface NavigationItem {
   end?: boolean;
@@ -44,16 +43,6 @@ export function Navbar() {
           ))}
         </div>
 
-        <a
-          className="navbar-cv"
-          href="/cv/vernel-josue-cv.pdf"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Abrir CV de Vernel Josué en una nueva pestaña"
-        >
-          <Download size={13} aria-hidden="true" />
-          CV
-        </a>
       </nav>
     </header>
   );

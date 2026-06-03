@@ -91,6 +91,95 @@
   box-shadow: 0 0 20px rgba(217, 70, 239, 0.16);
 }
 
+.contactForm {
+  display: grid;
+  gap: 1.1rem;
+  width: 100%;
+  max-width: 38rem;
+  text-align: left;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.fieldLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.fieldInput,
+.fieldTextarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(77, 232, 232, 0.18);
+  border-radius: var(--radius-btn);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.fieldInput:focus,
+.fieldTextarea:focus {
+  border-color: rgba(77, 232, 232, 0.6);
+  box-shadow: 0 0 0 3px rgba(77, 232, 232, 0.08);
+}
+
+.fieldInputError {
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
+.fieldInputError:focus {
+  border-color: rgba(239, 68, 68, 0.8);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.fieldTextarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.fieldError {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgb(239, 68, 68);
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
+.ctaDivider {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.successIcon {
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 12px rgba(77, 232, 232, 0.4));
+}
+
+.inlineLink {
+  color: var(--neon-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 640px) {
   .ctaActions {
     width: 100%;

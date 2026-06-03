@@ -45,7 +45,7 @@ export function HeroSection() {
 
             <a
               className={`${styles.cta} ${styles.ghostCta}`}
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/vernel-josue-386836390/"
               target="_blank"
               rel="noreferrer"
             >
